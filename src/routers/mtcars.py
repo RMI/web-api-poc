@@ -1,8 +1,11 @@
 from fastapi import APIRouter, status
+from fastapi.encoders import jsonable_encoder
+from fastapi.responses import JSONResponse
 from models.outputs import mtcar
 from services.mtcars import MTCARS
 
 data_output = APIRouter()
+
 
 @data_output.get(
     "/data",
@@ -17,6 +20,9 @@ async def get_full_mtcars() -> mtcar:
     ## Return mtcars dataset
     Endpoint to return mtcars dataset in json format. 
     Returns:
-        mtcars: Returns a JSON response with the health status
+        mtcars in json format
     """
-    return {MTCARS(status="OK")}
+    
+    # convert MTCARS dict into JSON response
+    MTCARS_json = jsonable_encoder(MTCARS)
+    return JSONResponse(content=MTCARS_json)

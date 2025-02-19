@@ -1,15 +1,18 @@
-import os
 import csv
 
-MTCARS_file = "./services/mtcars.csv"
+# define mtcars filepath 
+MTCARS_file = "./data/mtcars.csv"
 
-MTCARS = []
+#open mtcars file and read into dictionary
+def csv_to_dict(MTCARS_file):
+    mtcars = {}
+    with open(MTCARS_file, 'r') as file:
+        csv_reader = csv.DictReader(file)
+        for row in csv_reader:
+            # Assuming the first column is a unique key
+            key = row[csv_reader.fieldnames[0]]
+            mtcars[key] = row
+    return mtcars
 
-if os.path.exists(MTCARS_file):
-    with open(MTCARS_file, "r") as f:
-        reader = csv.DictReader(f)
-        for row in reader:
-            MTCARS.append(row)
-
-else: 
-    print("MTCARS file not found")
+# call csv to dict function
+MTCARS = csv_to_dict(MTCARS_file)
