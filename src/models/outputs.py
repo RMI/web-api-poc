@@ -1,6 +1,7 @@
 from pydantic import BaseModel
 
 class mtcar(BaseModel): 
+    model: str
     mpg: float
     cyl: int
     disp: float
