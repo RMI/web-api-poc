@@ -12,21 +12,31 @@ To install, follow the official installation guide: https://github.com/astral-sh
 
 ## Setup
 
-1. Clone the repo
+1. Clone the Repo
 
-cd <working_directory>
-
+```
 git clone https://github.com/RMI/web-api-poc
+cd web-api-poc
+```
 
-2. Activate the virtual environment
+2. Create and Activate the Virtual Environment
+```
+uv venv .venv
+source .venv/bin/activate # macOS/Linux
+```
 
-source .venv/bin/activate
+3. Install Dependencies
+```
+uv sync
+```
 
 # Running the API
 
 Locally serve the Fast API with:
 
+```
 uv run main.py
+```
 
 The API will be accessible at http://127.0.0.1:5000.
 
@@ -36,16 +46,18 @@ The API will be accessible at http://127.0.0.1:5000.
 
 Dependencies are managed using uv . New dependencies can be added using:
 
+```
 uv add <library>
+```
 
 ## Testing
-
+**TODO**
 
 ## Linting
-
+**TODO**
 
 ## Deployment
-
+**TODO**
 
 # License
-MIT 
+ This project is licensed under the [MIT License](LICENSE.txt) 
