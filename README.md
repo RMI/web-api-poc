@@ -64,7 +64,7 @@ uv run pytest tests/test_unit.py # to only run unit tests
 uv run pytest tests/test_integration.py # to only run integration tests
 ```
 
-If dependencies are added that are *only* required by tests, please add the appropriately to the `pyproject.toml` using:
+If dependencies are added that are *only* required by tests, please add them appropriately to `pyproject.toml` using:
 ``` 
 uv add --dev <library>
 ```
