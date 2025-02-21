@@ -1,5 +1,6 @@
 from fastapi import FastAPI
 from routers.health import health_router
+from routers.mtcars import data_output
 import uvicorn
 
 app = FastAPI()
@@ -10,6 +11,7 @@ def root():
     return {"Hello": "World"}
 
 app.include_router(health_router)
+app.include_router(data_output)
 
 
 if __name__ == "__main__":

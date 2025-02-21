@@ -2,3 +2,8 @@
 
 ## 2025-02-18 SAM
 Set up initial folder structure and root endpoint for API that returns "Hello World". Used UV for environment management. First router is a "health" endpoint that returns http status "OK", used health router to set up models and routers folders, defining the health model and router respectively. Mostly smooth sailing so far. Watched Youtube tutorials for UV and FastAPI, both have been intuitive and well-documented.
+
+## 2025-02-21 SAM
+Built data output routers for mtcars dataset. {root}/api/dataset returns full mtcars dataset in json. {root}/api/{item_id} returns individual mtcars item, with the item_id as the model name with spaces removed. Static data currently held in src/data. src/services/mtcars.py ingests dataset and returns a dictionary with the full dataset. HTTP responses encoded into routers, with 404 Item Not Found for {item_id} outside of the mtcars set (using HondaAccord to test). Status 200 OK returns for "good" requests. Status 500 Internal Server Error seems to be automatic in FastAPI, will return if code is not working (trying to dump entire mtcars dataset as 'str' instead of as json encoded). PR of mtcars work did create a small merge conflict with main branch, but should be fairly easy to resolve. 
+Set up initial folder structure and root endpoint for API that returns "Hello World". Used UV for environment management. First router is a "health" endpoint that returns http status "OK", used health router to set up models and routers folders, defining the health model and router respectively. Mostly smooth sailing so far. Watched Youtube tutorials for UV and FastAPI, both have been intuitive and well-documented.
+
