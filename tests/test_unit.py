@@ -1,6 +1,8 @@
-from src.routers.health import get_health
+import pytest
+from routers.health import get_health
 
 
-def test_get_health():
-    response = get_health()
-    assert response["status"] == "OK"
+@pytest.mark.asyncio
+async def test_get_health():
+    response = await get_health()
+    assert response.status == "OK"
