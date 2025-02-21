@@ -11,7 +11,6 @@ def root():
     return {"Hello": "World"}
 
 app.include_router(health_router)
-
 app.include_router(data_output)
 
 
