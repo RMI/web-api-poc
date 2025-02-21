@@ -66,7 +66,7 @@ uv run pytest tests/test_integration.py # to only run integration tests
 
 If dependencies are added that are *only* required by tests, please add the appropriately to the `pyproject.toml` using:
 ``` 
-uv add --dev <LIBRARY>
+uv add --dev <library>
 ```
 
 ## Linting
