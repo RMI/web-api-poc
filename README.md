@@ -51,7 +51,23 @@ uv add <library>
 ```
 
 ## Testing
-**TODO**
+ 
+Testing is implemented using the `pytest` library. All tests can be run locally using:
+
+```
+uv run pytest
+```
+
+Or, you can individually run unit or integration tests with:
+```
+uv run pytest tests/test_unit.py # to only run unit tests
+uv run pytest tests/test_integration.py # to only run integration tests
+```
+
+If dependencies are added that are *only* required by tests, please add the appropriately to the `pyproject.toml` using:
+``` 
+uv add --dev <LIBRARY>
+```
 
 ## Linting
 **TODO**
