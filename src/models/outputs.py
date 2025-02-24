@@ -1,7 +1,8 @@
 from pydantic import BaseModel
 
+
 #  create Pydantic model for mtcars dataset
-class mtcar(BaseModel): 
+class mtcar(BaseModel):
     model: str
     mpg: float
     cyl: int
@@ -14,4 +15,3 @@ class mtcar(BaseModel):
     am: bool
     gear: int
     carb: int
-
