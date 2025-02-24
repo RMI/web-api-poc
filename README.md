@@ -70,7 +70,15 @@ uv add --dev <library>
 ```
 
 ## Linting
-**TODO**
+
+This project follows the [black](https://github.com/psf/black) code formatting standard.
+Local code can easily be linted by calling:
+```
+black path/to/file.py # to lint a single file
+black . # to lint the entire directory
+```
+
+Code should be linted prior to opening a pull request in this repository. 
 
 ## Deployment
 **TODO**
