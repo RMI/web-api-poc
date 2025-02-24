@@ -76,7 +76,7 @@ This project follows the [black](https://github.com/psf/black) code formatting s
 
 ```
 black path/to/file.py # to lint a single file
-black . # to lint the entire directory
+black .               # to lint the entire directory
 ```
 
 Ensure that your code is properly formatted before submitting a pull request.
