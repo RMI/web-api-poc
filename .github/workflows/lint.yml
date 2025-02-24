@@ -1,4 +1,4 @@
-name: Linting
+name: Lint
 
 on:
   push:
@@ -10,7 +10,7 @@ on:
 
 jobs:
   black:
-    name: Run Black Code Formatter
+    name: Run black code formatter
     runs-on: ubuntu-latest
 
     steps:
