@@ -1,6 +1,6 @@
 from fastapi.testclient import TestClient
 from main import app
-from models.outputs import mtcar, mtcarlist
+from models.outputs import mtcar
 
 client = TestClient(app)
 
