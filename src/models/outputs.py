@@ -1,6 +1,5 @@
 from pydantic import BaseModel
 
-
 #  create Pydantic model for mtcars dataset
 class mtcar(BaseModel):
     model: str

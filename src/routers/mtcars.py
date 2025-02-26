@@ -1,8 +1,7 @@
 from fastapi import APIRouter, status, HTTPException
-from fastapi.encoders import jsonable_encoder
 from fastapi.responses import JSONResponse
 from models.outputs import mtcar
-from services.mtcars import MTCARS
+from services.mtcars import MTCARS_DATA
 
 data_output = APIRouter()
 
@@ -14,25 +13,26 @@ data_output = APIRouter()
     summary="Return mtcars dataset ",
     response_description="mtcars dataset in json",
     status_code=status.HTTP_200_OK,
-    response_model=mtcar,
+    response_model= list[mtcar]
 )
-async def get_full_mtcars() -> mtcar:
-    # convert MTCARS dict into JSON response
-    MTCARS_json = jsonable_encoder(MTCARS)
-    return JSONResponse(content=MTCARS_json)
-
+async def get_full_mtcars():
+    return [
+        mtcar(**b) for b in MTCARS_DATA
+    ]
 
 @data_output.get(
     # api endpoint for individual mtcars items
-    "/api/{item_id}",
+    "/api/{model_name}",
     tags=["data"],
     summary="Return mtcars item",
     response_description="mtcars item in json",
     status_code=status.HTTP_200_OK,
     response_model=mtcar,
 )
-async def read_item(item_id: str):
-    if item_id not in MTCARS:
-        raise HTTPException(status_code=404, detail="Item not found")
-
-    return MTCARS[item_id]
+async def read_item(model_name: str):
+    # searches MTCARS_DATA for specific model name
+    for item in MTCARS_DATA: 
+        if item["model"] == model_name:
+            return item
+    # 404 Item not found for when model name does not exist in MTCARS_DATA
+    raise HTTPException(status_code=404, detail="Item not found")
