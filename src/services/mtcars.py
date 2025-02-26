@@ -23,6 +23,7 @@ def csv_to_dict(mtcars_path):
     return mtcars_data
 
 
-# applies correct path and creates MTCARS_DATA from the function
-with resources.path("data", "mtcars.csv") as mtcars_path:
-    MTCARS_DATA = csv_to_dict(mtcars_path)
+
+mtcars_path = resources.files("data").joinpath("mtcars.csv")
+MTCARS = csv_to_dict(mtcars_path)
+
