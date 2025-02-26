@@ -24,4 +24,4 @@ def csv_to_dict(mtcars_path):
 
 
 mtcars_path = resources.files("data").joinpath("mtcars.csv")
-MTCARS = csv_to_dict(mtcars_path)
+MTCARS_DATA = csv_to_dict(mtcars_path)
