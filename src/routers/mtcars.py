@@ -13,12 +13,11 @@ data_output = APIRouter()
     summary="Return mtcars dataset ",
     response_description="mtcars dataset in json",
     status_code=status.HTTP_200_OK,
-    response_model= list[mtcar]
+    response_model=list[mtcar],
 )
 async def get_full_mtcars():
-    return [
-        mtcar(**b) for b in MTCARS_DATA
-    ]
+    return [mtcar(**b) for b in MTCARS_DATA]
+
 
 @data_output.get(
     # api endpoint for individual mtcars items
@@ -31,7 +30,7 @@ async def get_full_mtcars():
 )
 async def read_item(model_name: str):
     # searches MTCARS_DATA for specific model name
-    for item in MTCARS_DATA: 
+    for item in MTCARS_DATA:
         if item["model"] == model_name:
             return item
     # 404 Item not found for when model name does not exist in MTCARS_DATA
