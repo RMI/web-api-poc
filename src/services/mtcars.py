@@ -28,4 +28,3 @@ def mtcars_csv_to_dict(mtcars_path):
 mtcars_path = resources.files("data").joinpath("mtcars.csv")
 
 MTCARS_DATA = mtcars_csv_to_dict(mtcars_path)
-
