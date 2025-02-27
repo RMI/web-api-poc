@@ -1,11 +1,12 @@
 from fastapi import FastAPI
 from routers.health import health_router
 from routers.mtcars import data_output
+from docs.documentation import description
 import uvicorn
 
 app = FastAPI(
     title="RMI Web API poc",
-    description="This project is a proof-of-concept (POC) web API built using the FastAPI library.",
+    description=description,
     summary="This project is a proof-of-concept (POC) web API built using the FastAPI library.",
     version="0.0.1",
     contact={
