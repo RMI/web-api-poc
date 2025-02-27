@@ -11,7 +11,7 @@ def test_health_check():
     assert response.json() == {"status": "OK"}
 
 
-def test_output_model():
+def test_single_model():
     response = client.get("/api/HondaCivic")
     assert response.status_code == 200
     # Validate single mtcars instance against mtcar model
