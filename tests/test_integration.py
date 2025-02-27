@@ -11,13 +11,11 @@ def test_health_check():
     assert response.json() == {"status": "OK"}
 
 
-
 def test_element_model():
     response = client.get("/api/HondaCivic")
     assert response.status_code == 200
     # Validate single mtcars instance against mtcar model
     mtcar.model_validate(response.json())
-
 
 
 def test_dataset_model():
