@@ -43,5 +43,6 @@ jobs:
       - name: "Commit and push badge to README"
         uses: actions-js/push@master
         with:
+          branch: ${{ github.ref }}
           message: "Update coverage badge on README"
           github_token: ${{ secrets.GITHUB_TOKEN }}
