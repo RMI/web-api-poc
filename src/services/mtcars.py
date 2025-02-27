@@ -7,7 +7,6 @@ from models.outputs import mtcar
 # Function to read in csv, validate using mtcar model and output mtcars data in JSON
 
 def mtcars_csv_to_dict(mtcars_path):
-
     mtcars_data = []
     with open(mtcars_path) as f:
         reader = csv.DictReader(f)
