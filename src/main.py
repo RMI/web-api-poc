@@ -5,7 +5,9 @@ from docs.documentation import description
 import uvicorn
 
 app = FastAPI(
+    # This info goes directly into /docs
     title="RMI Web API poc",
+    # Description of API defined in docs/documentation.py for ease of reading
     description=description,
     summary="This project is a proof-of-concept (POC) web API built using the FastAPI library.",
     version="0.0.1",
