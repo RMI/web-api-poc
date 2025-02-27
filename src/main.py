@@ -1,9 +1,25 @@
 from fastapi import FastAPI
 from routers.health import health_router
 from routers.mtcars import data_output
+from docs.documentation import description
 import uvicorn
 
-app = FastAPI()
+app = FastAPI(
+    # This info goes directly into /docs
+    title="RMI Web API poc",
+    # Description of API defined in docs/documentation.py for ease of reading
+    description=description,
+    summary="This project is a proof-of-concept (POC) web API built using the FastAPI library.",
+    version="0.0.1",
+    contact={
+        "name": "RMI",
+        "url": "https://github.com/RMI",
+    },
+    license_info={
+        "name": "MIT",
+        "url": "https://github.com/RMI/web-api-poc/blob/main/LICENSE.txt",
+    },
+)
 
 
 @app.get("/")
