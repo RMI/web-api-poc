@@ -3,8 +3,20 @@ from routers.health import health_router
 from routers.mtcars import data_output
 import uvicorn
 
-app = FastAPI()
-
+app = FastAPI(
+    title="RMI Web API poc",
+    description="This project is a proof-of-concept (POC) web API built using the FastAPI library.",
+    summary="This project is a proof-of-concept (POC) web API built using the FastAPI library.",
+    version="0.0.1",
+    contact={
+        "name": "RMI",
+        "url": "https://github.com/RMI",
+    },
+    license_info={
+        "name": "MIT",
+        "url": "https://github.com/RMI/web-api-poc/blob/main/LICENSE.txt",
+    },
+)
 
 @app.get("/")
 def root():
