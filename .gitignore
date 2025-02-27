@@ -11,3 +11,6 @@ wheels/
 
 # MacOS specific
 .DS_Store
+
+# Coverage binary
+.coverage
