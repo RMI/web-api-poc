@@ -1,4 +1,5 @@
 from fastapi import FastAPI
+from fastapi.responses import RedirectResponse
 from routers.health import health_router
 from routers.mtcars import data_output
 import uvicorn
@@ -7,8 +8,9 @@ app = FastAPI()
 
 
 @app.get("/")
-def root():
-    return {"Hello": "World"}
+async def redirect():
+    response = RedirectResponse(url="/docs")
+    return response
 
 
 app.include_router(health_router)

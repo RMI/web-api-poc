@@ -26,3 +26,15 @@ def test_dataset_model():
     assert isinstance(mtcars, list)
     for mtcar_data in mtcars:
         mtcar(**mtcar_data)
+
+
+def test_root_redirects():
+    response = client.get("/", follow_redirects=False)
+    assert response.status_code == 307  # Temporary Redirect
+    assert response.headers["location"] == "/docs"
+
+
+def test_root_redirect_follows():
+    response = client.get("/", follow_redirects=True)
+    assert response.status_code == 200
+    assert "Swagger UI" in response.text
