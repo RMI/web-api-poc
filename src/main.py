@@ -12,6 +12,7 @@ async def redirect():
     response = RedirectResponse(url="/docs")
     return response
 
+
 app.include_router(health_router)
 app.include_router(data_output)
 
