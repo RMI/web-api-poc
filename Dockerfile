@@ -20,6 +20,6 @@ RUN --mount=type=cache,target=/root/.cache/uv \
     uv sync --frozen
 
 # Command to run the app when the container starts
-CMD ["uv", "run", "src/main.py", "--host", "0.0.0.0"]
+CMD ["uv", "run", "src/main.py"]
 
 
