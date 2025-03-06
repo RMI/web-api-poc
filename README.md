@@ -42,7 +42,14 @@ uv run src/main.py
 ### Run Fast API in docker container with: 
 
 ```
+# build the image
+docker compose build
+
+# run the container
 docker compose up
+
+# do both
+docker compose up --build
 ```
 
 The API will be accessible at http://localhost.
