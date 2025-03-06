@@ -13,8 +13,7 @@ COPY . /app
 RUN uv sync --frozen --no-install-project
 
 # Sync the project
-RUN --mount=type=cache,target=/root/.cache/uv \
-    uv sync --frozen
+RUN uv sync --frozen
 
 # Command to run the app when the container starts
 CMD ["uv", "run", "src/main.py"]
