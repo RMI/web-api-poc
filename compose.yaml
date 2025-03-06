@@ -1,0 +1,8 @@
+
+services:
+  api:
+    build: 
+      context: .
+    container_name: web-api-poc-app
+    ports:
+      - '80:5000'
