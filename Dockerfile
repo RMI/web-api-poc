@@ -17,5 +17,3 @@ RUN uv sync --frozen
 
 # Command to run the app when the container starts
 CMD ["uv", "run", "src/main.py"]
-
-
