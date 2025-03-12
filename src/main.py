@@ -5,8 +5,8 @@ from routers.mtcars import data_output
 import uvicorn
 import tomllib
 
-try: 
-    with open("pyproject.toml","rb") as f: 
+try:
+    with open("pyproject.toml", "rb") as f:
         tomldata = tomllib.load(f)
         version = tomldata["project"]["version"]
         description = tomldata["project"]["description"]
