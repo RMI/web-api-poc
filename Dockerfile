@@ -8,7 +8,8 @@ WORKDIR /app
 
 # Copy the current directory contents into the container at /app
 COPY . /app
-
+COPY src /app/
+ 
 # Install dependencies
 RUN uv sync --frozen --no-install-project
 
@@ -16,4 +17,4 @@ RUN uv sync --frozen --no-install-project
 RUN uv sync --frozen
 
 # Command to run the app when the container starts
-CMD ["uv", "run", "src/main.py"]
+CMD ["uv", "run", "test_main.py"]
