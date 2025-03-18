@@ -6,12 +6,12 @@ import uvicorn
 import tomllib
 import sys
 
-sys.path.append('../')
+sys.path.append("../")
 
 
 # Import pyproject toml info using tomllib
-try: 
-    with open("pyproject.toml","rb") as f: 
+try:
+    with open("pyproject.toml", "rb") as f:
         tomldata = tomllib.load(f)
         version = tomldata["project"]["version"]
         description = tomldata["project"]["description"]
