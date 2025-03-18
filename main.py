@@ -1,8 +1,8 @@
 from fastapi import FastAPI
 from fastapi.responses import RedirectResponse
-from routers.health import health_router
-from routers.mtcars import data_output
-from docs.documentation import description
+from src.routers.health import health_router
+from src.routers.mtcars import data_output
+from src.docs.documentation import description
 import uvicorn
 
 app = FastAPI(
