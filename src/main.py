@@ -4,14 +4,11 @@ from src.routers.health import health_router
 from src.routers.mtcars import data_output
 import uvicorn
 import tomllib
-import sys
-
-sys.path.append('../')
 
 
 # Import pyproject toml info using tomllib
 try: 
-    with open("pyproject.toml","rb") as f: 
+    with open("pyproject.toml", "rb") as f:
         tomldata = tomllib.load(f)
         version = tomldata["project"]["version"]
         description = tomldata["project"]["description"]
