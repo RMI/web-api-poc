@@ -17,4 +17,4 @@ RUN uv sync --frozen --no-install-project
 RUN uv sync --frozen
 
 # Command to run the app when the container starts
-CMD ["uv", "run", "test_main.py"]
+CMD ["uv", "run", "main.py"]
