@@ -14,3 +14,6 @@ wheels/
 
 # Coverage binary
 .coverage
+
+#Environment Variables
+.env
