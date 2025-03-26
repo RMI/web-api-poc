@@ -1,4 +1,4 @@
-FROM python:3.12.6
+FROM python:3.12.6-slim
 
 # Install uv
 COPY --from=ghcr.io/astral-sh/uv:latest /uv /uvx /bin/
@@ -9,7 +9,7 @@ WORKDIR /app
 # Copy the current directory contents into the container at /app
 COPY . /app
 COPY src /app/
- 
+
 # Install dependencies
 RUN uv sync --frozen --no-install-project
 
