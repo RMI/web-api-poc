@@ -1,0 +1,33 @@
+# Byte-compiled / cache
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+
+# Virtual environments
+.venv/
+env/
+venv/
+
+# Logs
+*.log
+
+# OS and IDE stuff
+.DS_Store
+.idea/
+.vscode/
+
+# Git
+.git/
+.gitignore
+
+# Tests
+tests/
+
+# Other project-specific files
+*.sqlite3
+*.db
+*.env
+*.coverage
+coverage.xml
+
