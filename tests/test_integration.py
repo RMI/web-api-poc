@@ -1,6 +1,10 @@
 from fastapi.testclient import TestClient
 from main import app
 from models.outputs import mtcar
+import os
+
+API_KEY = os.environ.get("API_KEY")
+headers = {"X-API-Key": API_KEY}
 
 client = TestClient(app)
 
@@ -12,14 +16,14 @@ def test_health_check():
 
 
 def test_element_model():
-    response = client.get("/api/HondaCivic")
+    response = client.get("/api/HondaCivic", headers=headers)
     assert response.status_code == 200
     # Validate single mtcars instance against mtcar model
     mtcar.model_validate(response.json())
 
 
 def test_dataset_model():
-    response = client.get("/api/dataset")
+    response = client.get("/api/dataset", headers=headers)
     assert response.status_code == 200
     # Validate that full dataset is a list and each list item is mtcar
     mtcars = response.json()
