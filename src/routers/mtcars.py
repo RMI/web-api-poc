@@ -1,7 +1,8 @@
-from fastapi import APIRouter, status, HTTPException
+from fastapi import APIRouter, status, HTTPException, Depends
 from fastapi.responses import JSONResponse
 from models.outputs import mtcar
 from services.mtcars import MTCARS_DATA
+from services.auth import get_api_key
 
 data_output = APIRouter()
 
@@ -15,7 +16,7 @@ data_output = APIRouter()
     status_code=status.HTTP_200_OK,
     response_model=list[mtcar],
 )
-async def get_full_mtcars():
+async def get_full_mtcars(api_key: str = Depends(get_api_key)):
     return [mtcar(**b) for b in MTCARS_DATA]
 
 
@@ -28,7 +29,7 @@ async def get_full_mtcars():
     status_code=status.HTTP_200_OK,
     response_model=mtcar,
 )
-async def read_item(model_name: str):
+async def read_item(model_name: str, api_key: str = Depends(get_api_key)):
     # searches MTCARS_DATA for specific model name
     for item in MTCARS_DATA:
         if item["model"] == model_name:
