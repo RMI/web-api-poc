@@ -33,6 +33,25 @@ jobs:
           registry: ghcr.io
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
+      
+      - name: Prepare Environment
+        id: prepare-environment
+        env:
+          registry: "ghcr.io"
+          image_name: ${{ github.repository_owner }}/web-api-poc
+        run: |
+          NOW="$(date -u +'%Y%m%dT%H%M%SZ')"
+          echo "now=$NOW" >> $GITHUB_OUTPUT
+          echo "$NOW"
+
+          registry_image=$(
+            echo "$registry/$image_name" | \
+            tr '[:upper:]' '[:lower:]' \
+          )
+          REGISTRY_IMAGE=${registry_image}
+          echo "registry-image=$REGISTRY_IMAGE"
+          echo "registry-image=$REGISTRY_IMAGE" >> $GITHUB_OUTPUT
+
 
       - name: Build and start container (as backing service)
         run: |
@@ -68,11 +87,11 @@ jobs:
 
       - name: Build and tag image
         run: |
-          docker build -t $IMAGE_NAME:${{ steps.tag.outputs.tag }} .
+          docker build -t ${{ steps.prepare-environment.outputs.registry-image }}:${{ steps.tag.outputs.tag }} .
 
       - name: Push to GHCR
         run: |
-          docker push $IMAGE_NAME:${{ steps.tag.outputs.tag }}
+          docker push ${{ steps.prepare-environment.outputs.registry-image }:${{ steps.tag.outputs.tag }}
 
       - name: Clean up
         run: docker compose down
