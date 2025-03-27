@@ -1,6 +1,14 @@
 from fastapi.testclient import TestClient
 from main import app
 from models.outputs import mtcar
+from services.auth import get_api_key
+
+
+def override_get_api_key():
+    return True
+
+
+app.dependency_overrides[get_api_key] = override_get_api_key
 
 client = TestClient(app)
 

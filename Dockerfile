@@ -1,20 +1,30 @@
-FROM python:3.12.6
+# Stage 1: Get uv binary
+FROM ghcr.io/astral-sh/uv:0.6.10 as uv-builder
+
+# Stage 2: Build the app
+FROM python:3.12.6-slim
 
 # Install uv
-COPY --from=ghcr.io/astral-sh/uv:latest /uv /uvx /bin/
+COPY --from=uv-builder  /uv /uvx /bin/
 
-# Set the working directory inside the container
+# Set the working directory
 WORKDIR /app
 
-# Copy the current directory contents into the container at /app
-COPY . /app
-COPY src /app/
- 
-# Install dependencies
+# Copy dependenicy files
+COPY pyproject.toml uv.lock ./
+
+# Install dependencies (without installing project)
 RUN uv sync --frozen --no-install-project
 
-# Sync the project
-RUN uv sync --frozen
+# Copy project source code
+COPY src/ ./src/
 
-# Command to run the app when the container starts
-CMD ["uv", "run", "main.py"]
+# Copy main entrypoint
+COPY main.py ./main.py
+
+# Add non-root user
+RUN useradd -m appuser
+USER appuser
+
+ENTRYPOINT ["uv"]
+CMD ["run", "main.py"]

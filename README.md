@@ -36,7 +36,7 @@ uv sync
 ### Locally serve the Fast API with:
 
 ```
-uv run src/main.py
+uv run main.py
 ```
 
 ### Run Fast API in docker container with: 
