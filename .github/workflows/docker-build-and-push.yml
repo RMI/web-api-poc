@@ -1,4 +1,4 @@
-name: "Docker: Build & Push"
+name: "Docker"
 
 on:
   schedule:
@@ -10,6 +10,7 @@ on:
 
 jobs:
   build-test-and-push:
+    name: "Build and push"
     runs-on: ubuntu-latest
 
     permissions:
