@@ -1,6 +1,6 @@
 # web-api-poc
 [![Test Status](https://github.com/RMI/web-api-poc/actions/workflows/test.yml/badge.svg?branch=main)](https://github.com/RMI/web-api-poc/actions/workflows/test.yml)
-[![Lint](https://github.com/RMI/web-api-poc/actions/workflows/lint.yml/badge.svg)](https://github.com/RMI/web-api-poc/actions/workflows/lint.yml)
+[![Lint](https://github.com/RMI/web-api-poc/actions/workflows/lint.yml/badge.svg?branch=main)](https://github.com/RMI/web-api-poc/actions/workflows/lint.yml)
 
 This project is a proof-of-concept (POC) web API built using the FastAPI library.
 
