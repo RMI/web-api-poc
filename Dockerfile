@@ -19,6 +19,8 @@ RUN uv sync --frozen --no-install-project
 # Copy project source code
 COPY src/ ./src/
 
+RUN chmod -R a+w /app/src /app/.venv
+
 # Copy main entrypoint
 COPY main.py ./main.py
 
