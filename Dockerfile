@@ -1,5 +1,5 @@
 # Stage 1: Get uv binary
-FROM ghcr.io/astral-sh/uv:0.6.10 as uv-builder
+FROM ghcr.io/astral-sh/uv:0.6.10 AS uv-builder
 
 # Stage 2: Build the app
 FROM python:3.12.6-slim
@@ -17,9 +17,9 @@ COPY pyproject.toml uv.lock ./
 RUN uv sync --frozen --no-install-project
 
 # Copy project source code
-COPY src/ ./src/
+COPY api/ ./api/
 
-RUN chmod -R a+w /app/src /app/.venv
+RUN chmod -R a+w /app/api /app/.venv
 
 # Copy main entrypoint
 COPY main.py ./main.py
