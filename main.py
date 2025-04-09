@@ -1,7 +1,7 @@
 from fastapi import FastAPI
 from fastapi.responses import RedirectResponse
-from src.routers.health import health_router
-from src.routers.mtcars import data_output
+from api.routers.health import health_router
+from api.routers.mtcars import data_output
 import uvicorn
 import tomllib
 
@@ -16,10 +16,10 @@ except FileNotFoundError:
 
 app = FastAPI(
     # This info goes directly into /docs
-    title="RMI Web API poc",
+    title="PBTAR",
     # Description of API defined in docs/documentation.py for ease of reading
     description=description,
-    summary="This project is a proof-of-concept (POC) web API built using the FastAPI library.",
+    summary="PBTAR",
     version="0.0.1",
     contact={
         "name": "RMI",
@@ -27,7 +27,7 @@ app = FastAPI(
     },
     license_info={
         "name": "MIT",
-        "url": "https://github.com/RMI/web-api-poc/blob/main/LICENSE.txt",
+        "url": "https://github.com/RMI/pbtar/blob/main/LICENSE.txt",
     },
 )
 
