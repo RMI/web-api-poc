@@ -1,6 +1,6 @@
 from fastapi.testclient import TestClient
-from main import app
-from models.outputs import mtcar
+from src.main import app
+from src.models.outputs import mtcar
 from services.auth import get_api_key
 
 
