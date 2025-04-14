@@ -17,9 +17,9 @@ COPY pyproject.toml uv.lock ./
 RUN uv sync --frozen --no-install-project
 
 # Copy project source code
-COPY api/ ./api/
+COPY src/ ./src/
 
-RUN chmod -R a+w /app/api /app/.venv
+RUN chmod -R a+w /app/src /app/.venv
 
 # Copy main entrypoint
 COPY main.py ./main.py
