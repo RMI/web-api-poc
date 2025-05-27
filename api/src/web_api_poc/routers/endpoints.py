@@ -3,7 +3,8 @@ from typing import List, Dict, Any
 import os
 import psycopg2
 from dotenv import load_dotenv
-from ..models.dvdrental import TableList, Column, Film, FilmList, Rental, RentalList, Actor, ActorList
+from ..models.dvdrental import TableList, Column, FilmList
+from psycopg2.extras import RealDictCursor
 
 
 # Load environment variables
@@ -79,32 +80,6 @@ async def get_table_schema(table_name: str):
         raise
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Error retrieving schema: {str(e)}")
-    finally:
-        if conn:
-            conn.close()
-
-@endpoints.get("/films/category/{category_name}", response_model=FilmList)
-async def get_films_by_category(category_name: str, limit: int = 10, skip: int = 0):
-    """Get films by category name"""
-    conn = None
-    try:
-        conn = get_db_connection()
-        cursor = conn.cursor(cursor_factory=RealDictCursor)
-        cursor.execute("""
-            SELECT f.film_id, f.title, f.description, f.release_year, f.length, f.rating
-            FROM film f
-            JOIN film_category fc ON f.film_id = fc.film_id
-            JOIN category c ON fc.category_id = c.category_id
-            WHERE c.name = %s
-            ORDER BY f.title
-            LIMIT %s OFFSET %s;
-        """, (category_name, limit, skip))
-        films = cursor.fetchall()
-        if not films:
-            raise HTTPException(status_code=404, detail=f"No films found in category '{category_name}'")
-        return films
-    except Exception as e:
-        raise HTTPException(status_code=500, detail=f"Error retrieving films: {str(e)}")
     finally:
         if conn:
             conn.close()
