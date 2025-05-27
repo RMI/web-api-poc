@@ -1,0 +1,36 @@
+from fastapi.testclient import TestClient
+from web_api_poc import create_app
+
+app = create_app(title="foo", description="bar", version="baz")
+
+base_url = "http://testserver"
+client = TestClient(app, base_url=base_url)
+
+
+def test_root_redirects():
+    response = client.get("/", follow_redirects=False)
+    assert response.status_code == 307  # Temporary Redirect
+    assert response.headers["location"] == "/docs"
+
+
+def test_root_redirect_follows():
+    response = client.get("/", follow_redirects=True)
+    assert response.status_code == 200
+    assert "Swagger UI" in response.text
+
+
+def test_health_check():
+    response = client.get("/health", follow_redirects=False)
+    assert response.status_code == 200
+    assert response.json() == {"status": "OK"}
+
+
+def test_health_check_redirect():
+    response = client.get("/health/", follow_redirects=False)
+    assert response.status_code == 307
+    assert response.headers["location"] == base_url + "/health"
+
+
+def test_bad_request():
+    response = client.get("/xxx")
+    assert response.status_code == 404
