@@ -1,5 +1,5 @@
 [project]
-name = "web-api-poc"
+name = "web_api_poc"
 version = "0.1.0"
 description = "POC for web API using fastapi"
 readme = "README.md"
@@ -7,17 +7,18 @@ requires-python = ">=3.12"
 dependencies = [
     "dotenv>=0.9.9",
     "fastapi>=0.115.8",
+    "psycopg2-binary>=2.9.10",
     "pydantic>=2.10.6",
     "uvicorn>=0.34.0",
 ]
 
 [dependency-groups]
 dev = [
-    "black>=25.1.0",
     "httpx>=0.28.1",
     "pytest>=8.3.4",
     "pytest-asyncio>=0.25.3",
     "pytest-cov>=6.0.0",
+    "ruff>=0.11.9"
 ]
 
 [build-system]
