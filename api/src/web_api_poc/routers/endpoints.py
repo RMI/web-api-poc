@@ -1,9 +1,9 @@
-from fastapi import APIRouter, Depends, HTTPException
-from typing import List, Dict, Any
+from fastapi import APIRouter, HTTPException
+from typing import List
 import os
 import psycopg2
 from dotenv import load_dotenv
-from ..models.dvdrental import TableList, Column, FilmList
+from ..models.dvdrental import TableList, Column
 from psycopg2.extras import RealDictCursor
 
 
