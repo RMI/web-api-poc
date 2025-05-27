@@ -1,4 +1,4 @@
-name: Test
+name: Test API service
 
 on:
   push:
@@ -7,6 +7,7 @@ on:
   pull_request:
     branches:
       - main
+  workflow_dispatch:
 
 jobs:
   test:
@@ -17,23 +18,24 @@ jobs:
       - uses: actions/checkout@v4
 
       - name: Install uv
-        uses: astral-sh/setup-uv@v5
+        uses: astral-sh/setup-uv@v6
 
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
-          python-version-file: ".python-version"
-      
+          python-version-file: "api/.python-version"
+
       - name: Install the  project
-        run: uv sync --all-extras --dev
+        run: uv sync --all-extras --dev --directory api
 
       - name: "Run tests"
         run: |
           set -o pipefail
-          uv run pytest --junitxml=pytest.xml --cov-report=term-missing:skip-covered --cov=src tests/ | tee pytest-coverage.txt
+          uv run --directory api pytest --junitxml=pytest.xml --cov-report=term-missing:skip-covered --cov=src tests/ | tee pytest-coverage.txt
 
       - name: "Pytest coverage comment"
         uses: MishaKav/pytest-coverage-comment@main
+        if: github.actor != 'dependabot[bot]'
         with:
           pytest-coverage-path: ./pytest-coverage.txt
-          junitxml-path: ./pytest.xml
+          junitxml-path: ./api/pytest.xml
