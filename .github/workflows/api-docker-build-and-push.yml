@@ -1,5 +1,4 @@
-name: "Docker build and push API service to ghcr.io"
-
+name: Build and Push API Service Docker Image
 on:
   schedule:  # Scheduled workflows only run on the default branch
     - cron: '0 3 * * *'  # Nightly at 3 AM UTC
