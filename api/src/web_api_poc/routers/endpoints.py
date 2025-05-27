@@ -2,7 +2,6 @@ from fastapi import APIRouter, Depends, HTTPException
 from typing import List, Dict, Any
 import os
 import psycopg2
-from psycopg2.extras import RealDictCursor
 from dotenv import load_dotenv
 from ..models.dvdrental import TableList, Column, Film, FilmList, Rental, RentalList, Actor, ActorList
 
@@ -106,54 +105,6 @@ async def get_films_by_category(category_name: str, limit: int = 10, skip: int =
         return films
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Error retrieving films: {str(e)}")
-    finally:
-        if conn:
-            conn.close()
-
-@endpoints.get("/films/search", response_model=FilmList)
-async def search_films(title: str = None, actor: str = None, limit: int = 10, skip: int = 0):
-    """Search films by title and/or actor name"""
-    conn = None
-    try:
-        conn = get_db_connection()
-        cursor = conn.cursor(cursor_factory=RealDictCursor)
-        
-        query = """
-            SELECT DISTINCT f.film_id, f.title, f.description, f.release_year, 
-                   f.length, f.rating, f.rental_rate
-            FROM film f
-        """
-        params = []
-        where_clauses = []
-        
-        if actor:
-            query += """
-                JOIN film_actor fa ON f.film_id = fa.film_id
-                JOIN actor a ON fa.actor_id = a.actor_id
-            """
-            where_clauses.append("(a.first_name ILIKE %s OR a.last_name ILIKE %s)")
-            params.extend([f"%{actor}%", f"%{actor}%"])
-        
-        if title:
-            where_clauses.append("f.title ILIKE %s")
-            params.append(f"%{title}%")
-        
-        if where_clauses:
-            query += " WHERE " + " AND ".join(where_clauses)
-        
-        query += """
-            ORDER BY f.title
-            LIMIT %s OFFSET %s;
-        """
-        params.extend([limit, skip])
-        
-        cursor.execute(query, params)
-        films = cursor.fetchall()
-        if not films:
-            raise HTTPException(status_code=404, detail="No films found matching the criteria")
-        return films
-    except Exception as e:
-        raise HTTPException(status_code=500, detail=f"Error searching films: {str(e)}")
     finally:
         if conn:
             conn.close()
