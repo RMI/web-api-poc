@@ -8,6 +8,8 @@
 [![Test service integration](https://github.com/RMI/web-api-poc/actions/workflows/integration-test.yml/badge.svg?branch=main)](https://github.com/RMI/web-api-poc/actions/workflows/integration-test.yml)
 [![Docker](https://github.com/RMI/web-api-poc/actions/workflows/api-docker-build-and-push.yml/badge.svg?branch=main)](https://github.com/RMI/web-api-poc/actions/workflows/api-docker-build-and-push.yml)
 
+This project is a proof-of-concept (POC) web API built using the FastAPI library. It is designed to demonstrate the integration of a web API with a database service, including basic CRUD operations and API key authentication.
+
 ## Running the application
 
 ### Setup
