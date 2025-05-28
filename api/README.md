@@ -4,7 +4,7 @@
 [![Docker](https://github.com/RMI/web-api-poc/actions/workflows/api-docker-build-and-push.yml/badge.svg?branch=main)](https://github.com/RMI/web-api-poc/actions/workflows/api-docker-build-and-push.yml)
 [![Lint](https://github.com/RMI/web-api-poc/actions/workflows/api-lint.yml/badge.svg?branch=main)](https://github.com/RMI/web-api-poc/actions/workflows/api-lint.yml)
 
-This directory (`api/`) contains the API service for the Pathways-based transition assessment repository (poc).
+This directory (`api/`) contains the API service for the WebAPI proof of concept repository (poc).
 
 NOTE: All commands in this README are written with the assumption that the working directory is `api/`, e.g. you have used `cd api` from the root directory of the poc repo, so that the context is exclusive to the API service.
 
