@@ -20,14 +20,16 @@ def create_app(title, description, version):
         },
         license_info={
             "name": "MIT",
-            "url": "https://github.com/RMI/web-api-poc/blob/main/LICENSE.txt",
+            "url": "https://github.com/RMI/pbtar/blob/main/LICENSE.txt",
         },
     )
 
     # Configure CORS
     origins = [
         "http://localhost",
+        "http://localhost:3000",
         "http://0.0.0.0",
+        "http://0.0.0.0:3000",
         "null",
     ]  # "null" is necessary for a request from a local file
 

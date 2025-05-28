@@ -1,12 +1,12 @@
-# web-api-poc - API Service
-[![Test Status](https://github.com/RMI/web-api-poc/actions/workflows/api-test.yml/badge.svg?branch=main)](https://github.com/RMI/web-api-poc/actions/workflows/api-test.yml)
-[![Docker](https://github.com/RMI/web-api-poc/actions/workflows/api-docker-build-and-push.yml/badge.svg?branch=main)](https://github.com/RMI/web-api-poc/actions/workflows/api-docker-build-and-push.yml)
-[![Lint](https://github.com/RMI/web-api-poc/actions/workflows/api-lint.yml/badge.svg?branch=main)](https://github.com/RMI/web-api-poc/actions/workflows/api-lint.yml)
+# Pathways-based transition assessment repository (pbtar) - API service
 
-This project is a proof-of-concept (POC) web API built using the FastAPI library.
+[![Test Status](https://github.com/RMI/pbtar/actions/workflows/api-test.yml/badge.svg?branch=main)](https://github.com/RMI/pbtar/actions/workflows/api-test.yml)
+[![Docker](https://github.com/RMI/pbtar/actions/workflows/api-docker-build-and-push.yml/badge.svg?branch=main)](https://github.com/RMI/pbtar/actions/workflows/api-docker-build-and-push.yml)
+[![Lint](https://github.com/RMI/pbtar/actions/workflows/api-lint.yml/badge.svg?branch=main)](https://github.com/RMI/pbtar/actions/workflows/api-lint.yml)
 
-NOTE: All commands in this README are written with the assumption that the working directory is `api/`, e.g. you have used `cd api` from the root directory of the web-api-poc repo, so that the context is exclusive to the API service.
+This directory (`api/`) contains the API service for the Pathways-based transition assessment repository (pbtar).
 
+NOTE: All commands in this README are written with the assumption that the working directory is `api/`, e.g. you have used `cd api` from the root directory of the pbtar repo, so that the context is exclusive to the API service.
 
 ## Set-Up
 
@@ -21,8 +21,8 @@ To install, follow the [official installation guide](https://github.com/astral-s
 1. Clone the Repo
 
 ```sh
-git clone https://github.com/RMI/web-api-poc
-cd web-api-poc/api
+git clone https://github.com/RMI/pbtar
+cd pbtar/api
 ```
 
 2. Create and Activate the Virtual Environment
@@ -80,7 +80,7 @@ Or, you can run specific test suites with:
 
 ```sh
 uv run pytest tests/test_unit.py        # to only run unit tests
-uv run pytest tests/test_server.py # to only run server tests
+uv run pytest tests/test_integration.py # to only run integration tests
 ```
 
 For test-only dependencies, add them using:

@@ -1,7 +1,7 @@
 [project]
-name = "web_api_poc"
+name = "pbtar_api"
 version = "0.1.0"
-description = "POC for web API using fastapi"
+description = "API for the pathways-based transition assessment repository (pbtar)"
 readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
@@ -9,6 +9,7 @@ dependencies = [
     "fastapi>=0.115.8",
     "psycopg2-binary>=2.9.10",
     "pydantic>=2.10.6",
+    "sqlalchemy>=2.0.40",
     "uvicorn>=0.34.0",
 ]
 
@@ -18,7 +19,7 @@ dev = [
     "pytest>=8.3.4",
     "pytest-asyncio>=0.25.3",
     "pytest-cov>=6.0.0",
-    "ruff>=0.11.9"
+    "ruff>=0.11.9",
 ]
 
 [build-system]

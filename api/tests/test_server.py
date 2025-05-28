@@ -1,7 +1,15 @@
 from fastapi.testclient import TestClient
-from web_api_poc import create_app
+from pbtar_api import create_app
+from pbtar_api.services.auth import get_api_key
 
 app = create_app(title="foo", description="bar", version="baz")
+
+
+def override_get_api_key():
+    return True
+
+
+app.dependency_overrides[get_api_key] = override_get_api_key
 
 base_url = "http://testserver"
 client = TestClient(app, base_url=base_url)
