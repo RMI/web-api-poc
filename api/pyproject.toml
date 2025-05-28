@@ -1,7 +1,7 @@
 [project]
 name = "web_api_poc"
 version = "0.1.0"
-description = "API for the pathways-based transition assessment repository (poc)"
+description = "A proof of concept API (poc)"
 readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [

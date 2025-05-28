@@ -1,8 +1,8 @@
-# Pathways-based transition assessment repository (poc) - API service
+# WebAPI and database proof of concept (poc) - API service
 
-[![Test Status](https://github.com/RMI/poc/actions/workflows/api-test.yml/badge.svg?branch=main)](https://github.com/RMI/poc/actions/workflows/api-test.yml)
-[![Docker](https://github.com/RMI/poc/actions/workflows/api-docker-build-and-push.yml/badge.svg?branch=main)](https://github.com/RMI/poc/actions/workflows/api-docker-build-and-push.yml)
-[![Lint](https://github.com/RMI/poc/actions/workflows/api-lint.yml/badge.svg?branch=main)](https://github.com/RMI/poc/actions/workflows/api-lint.yml)
+[![Test Status](https://github.com/RMI/web-api-poc/actions/workflows/api-test.yml/badge.svg?branch=main)](https://github.com/RMI/web-api-poc/actions/workflows/api-test.yml)
+[![Docker](https://github.com/RMI/web-api-poc/actions/workflows/api-docker-build-and-push.yml/badge.svg?branch=main)](https://github.com/RMI/web-api-poc/actions/workflows/api-docker-build-and-push.yml)
+[![Lint](https://github.com/RMI/web-api-poc/actions/workflows/api-lint.yml/badge.svg?branch=main)](https://github.com/RMI/web-api-poc/actions/workflows/api-lint.yml)
 
 This directory (`api/`) contains the API service for the Pathways-based transition assessment repository (poc).
 

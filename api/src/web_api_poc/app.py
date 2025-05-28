@@ -20,7 +20,7 @@ def create_app(title, description, version):
         },
         license_info={
             "name": "MIT",
-            "url": "https://github.com/RMI/poc/blob/main/LICENSE.txt",
+            "url": "https://github.com/RMI/web-api-poc/blob/main/LICENSE.txt",
         },
     )
 
