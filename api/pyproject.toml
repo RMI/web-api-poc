@@ -1,5 +1,5 @@
 [project]
-name = "poc_api"
+name = "web_api_poc"
 version = "0.1.0"
 description = "API for the pathways-based transition assessment repository (poc)"
 readme = "README.md"

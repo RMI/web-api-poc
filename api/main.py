@@ -15,7 +15,7 @@ if POC_API_LOG_LEVEL not in valid_log_levels:
     print(f"Warning: Invalid log level '{POC_API_LOG_LEVEL}'. Defaulting to 'info'.")
     POC_API_LOG_LEVEL = "info"
 
-meta = metadata("poc_api")
+meta = metadata("web_api_poc")
 
 app = create_app(
     title="POC API", description=meta["summary"], version=meta["version"]

@@ -1,6 +1,6 @@
 from fastapi.testclient import TestClient
-from poc_api import create_app
-from poc_api.services.auth import get_api_key
+from web_api_poc import create_app
+from web_api_poc.services.auth import get_api_key
 
 app = create_app(title="foo", description="bar", version="baz")
 
