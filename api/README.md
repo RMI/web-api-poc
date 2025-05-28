@@ -21,9 +21,8 @@ To install, follow the [official installation guide](https://github.com/astral-s
 1. Clone the Repo
 
 ```sh
-git clone https://github.com/RMI/poc
-cd poc/api
-```
+git clone https://github.com/RMI/web-api-poc
+cd web-api-poc/api
 
 2. Create and Activate the Virtual Environment
 
