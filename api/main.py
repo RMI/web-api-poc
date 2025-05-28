@@ -1,4 +1,4 @@
-from poc_api import create_app
+from web_api_poc import create_app
 from uvicorn import run
 from importlib.metadata import metadata
 from os import getenv
