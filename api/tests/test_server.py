@@ -1,6 +1,6 @@
 from fastapi.testclient import TestClient
-from pbtar_api import create_app
-from pbtar_api.services.auth import get_api_key
+from poc_api import create_app
+from poc_api.services.auth import get_api_key
 
 app = create_app(title="foo", description="bar", version="baz")
 

@@ -15,7 +15,7 @@ Base = declarative_base()
 # Organizations Table
 class Organization(Base):
     __tablename__ = "organizations"
-    __table_args__ = {"schema": "pbtar"}
+    __table_args__ = {"schema": "poc"}
 
     id = Column(Integer, primary_key=True)
     name = Column(String(255), unique=True, nullable=False)
@@ -37,7 +37,7 @@ class Organization(Base):
 # Scenarios Table
 class Scenario(Base):
     __tablename__ = "scenarios"
-    __table_args__ = {"schema": "pbtar"}
+    __table_args__ = {"schema": "poc"}
 
     id = Column(Integer, primary_key=True)
     name = Column(String(255), nullable=False)
@@ -48,7 +48,7 @@ class Scenario(Base):
     nature = Column(String(50), nullable=True)
     target_temperature = Column(String(50), nullable=True)
     organization_id = Column(
-        Integer, ForeignKey("pbtar.organizations.id", ondelete="CASCADE"), nullable=True
+        Integer, ForeignKey("poc.organizations.id", ondelete="CASCADE"), nullable=True
     )
     created_on = Column(DateTime, default=func.current_timestamp(), nullable=False)
     updated_on = Column(
@@ -62,12 +62,12 @@ class Scenario(Base):
     organization = relationship("Organization", back_populates="scenarios")
     geographic_coverages = relationship(
         "GeographicCoverage",
-        secondary="pbtar.scenario_geographic_coverage",
+        secondary="poc.scenario_geographic_coverage",
         back_populates="scenarios",
     )
     sector_coverages = relationship(
         "SectorCoverage",
-        secondary="pbtar.scenario_sector_coverage",
+        secondary="poc.scenario_sector_coverage",
         back_populates="scenarios",
     )
 
@@ -75,7 +75,7 @@ class Scenario(Base):
 # Geographic Coverage Table
 class GeographicCoverage(Base):
     __tablename__ = "geographic_coverage"
-    __table_args__ = {"schema": "pbtar"}
+    __table_args__ = {"schema": "poc"}
 
     id = Column(Integer, primary_key=True)
     name = Column(String(255), unique=True, nullable=False)
@@ -83,7 +83,7 @@ class GeographicCoverage(Base):
     # Relationships
     scenarios = relationship(
         "Scenario",
-        secondary="pbtar.scenario_geographic_coverage",
+        secondary="poc.scenario_geographic_coverage",
         back_populates="geographic_coverages",
     )
 
@@ -91,7 +91,7 @@ class GeographicCoverage(Base):
 # Sector Coverage Table
 class SectorCoverage(Base):
     __tablename__ = "sector_coverage"
-    __table_args__ = {"schema": "pbtar"}
+    __table_args__ = {"schema": "poc"}
 
     id = Column(Integer, primary_key=True)
     name = Column(String(255), unique=True, nullable=False)
@@ -99,7 +99,7 @@ class SectorCoverage(Base):
     # Relationships
     scenarios = relationship(
         "Scenario",
-        secondary="pbtar.scenario_sector_coverage",
+        secondary="poc.scenario_sector_coverage",
         back_populates="sector_coverages",
     )
 
@@ -107,14 +107,14 @@ class SectorCoverage(Base):
 # Junction Table for Scenario and Geographic Coverage
 class ScenarioGeographicCoverage(Base):
     __tablename__ = "scenario_geographic_coverage"
-    __table_args__ = {"schema": "pbtar"}
+    __table_args__ = {"schema": "poc"}
 
     scenario_id = Column(
-        Integer, ForeignKey("pbtar.scenarios.id", ondelete="CASCADE"), primary_key=True
+        Integer, ForeignKey("poc.scenarios.id", ondelete="CASCADE"), primary_key=True
     )
     geographic_coverage_id = Column(
         Integer,
-        ForeignKey("pbtar.geographic_coverage.id", ondelete="CASCADE"),
+        ForeignKey("poc.geographic_coverage.id", ondelete="CASCADE"),
         primary_key=True,
     )
 
@@ -122,13 +122,13 @@ class ScenarioGeographicCoverage(Base):
 # Junction Table for Scenario and Sector Coverage
 class ScenarioSectorCoverage(Base):
     __tablename__ = "scenario_sector_coverage"
-    __table_args__ = {"schema": "pbtar"}
+    __table_args__ = {"schema": "poc"}
 
     scenario_id = Column(
-        Integer, ForeignKey("pbtar.scenarios.id", ondelete="CASCADE"), primary_key=True
+        Integer, ForeignKey("poc.scenarios.id", ondelete="CASCADE"), primary_key=True
     )
     sector_coverage_id = Column(
         Integer,
-        ForeignKey("pbtar.sector_coverage.id", ondelete="CASCADE"),
+        ForeignKey("poc.sector_coverage.id", ondelete="CASCADE"),
         primary_key=True,
     )

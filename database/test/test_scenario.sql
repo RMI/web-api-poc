@@ -1,6 +1,6 @@
--- Use pbtar as seach path
+-- Use poc as seach path
 -- This is still needed for queries in PG ADMIN, despite being set on init
-SET search_path TO pbtar;
+SET search_path TO poc;
 
 -- Insert a new organization
 INSERT INTO organizations (name, logo_url)

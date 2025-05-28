@@ -5,10 +5,10 @@ from dotenv import load_dotenv
 
 # import .env settings
 load_dotenv()
-PBTAR_DB_PORT = getenv("PBTAR_DB_PORT", "5432")
+POC_DB_PORT = getenv("POC_DB_PORT", "5432")
 
 # Define database connection string
-DATABASE_URL = "postgresql://postgres:postgres@db:" + PBTAR_DB_PORT + "/pbtar"
+DATABASE_URL = "postgresql://postgres:postgres@db:" + POC_DB_PORT + "/poc"
 # Set up SQLAlchemy engine and session
 engine = create_engine(DATABASE_URL)
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)

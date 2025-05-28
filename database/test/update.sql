@@ -1,4 +1,4 @@
-SET search_path TO pbtar;
+SET search_path TO poc;
 
 -- Update the name of an organization
 UPDATE organizations

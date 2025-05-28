@@ -218,7 +218,7 @@ wheels = [
 ]
 
 [[package]]
-name = "pbtar-api"
+name = "poc-api"
 version = "0.1.0"
 source = { editable = "." }
 dependencies = [

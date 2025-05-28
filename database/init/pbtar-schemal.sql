@@ -1,8 +1,8 @@
 -- Create schema
-CREATE SCHEMA IF NOT EXISTS pbtar;
+CREATE SCHEMA IF NOT EXISTS poc;
 
 -- Set search path
-SET search_path TO pbtar;
+SET search_path TO poc;
 
 -- Create table for organizations
 CREATE TABLE IF NOT EXISTS organizations (

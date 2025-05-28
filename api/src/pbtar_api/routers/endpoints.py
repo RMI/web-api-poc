@@ -19,8 +19,8 @@ def get_tables(db=Depends(get_db)):
 def get_tables_from_db():
     inspector = inspect(engine)  # Use the SQLAlchemy engine to inspect the database
     return inspector.get_table_names(
-        schema="pbtar"
-    )  # Get table names in the 'pbtar' schema
+        schema="poc"
+    )  # Get table names in the 'poc' schema
 
 
 # Router to get the entire scenarios table
@@ -75,7 +75,7 @@ def search_organizations_by_name(
     # Perform the full-text search dynamically on the `name` field
     query = text("""
         SELECT id, name
-        FROM pbtar.organizations
+        FROM poc.organizations
         WHERE to_tsvector('english', name) @@ to_tsquery(:query)
         ORDER BY ts_rank(to_tsvector('english', name), to_tsquery(:query)) DESC
     """)

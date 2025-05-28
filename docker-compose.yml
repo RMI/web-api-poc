@@ -4,25 +4,25 @@ services:
     build:
       context: api
     environment:
-      - PBTAR_API_KEY=${PBTAR_API_KEY:-abc123}
-      - PBTAR_API_PORT=${PBTAR_API_PORT:-8000}
-      - PBTAR_API_LOG_LEVEL=${PBTAR_API_LOG_LEVEL:-info}
-      - PBTAR_DB_PORT=${PBTAR_DB_PORT:-5432}
+      - POC_API_KEY=${POC_API_KEY:-abc123}
+      - POC_API_PORT=${POC_API_PORT:-8000}
+      - POC_API_LOG_LEVEL=${POC_API_LOG_LEVEL:-info}
+      - POC_DB_PORT=${POC_DB_PORT:-5432}
       - PYTHONUNBUFFERED=1
-    container_name: pbtar-api
+    container_name: poc-api
     ports:
-      - "${PBTAR_API_PORT:-8000}:${PBTAR_API_PORT:-8000}"
+      - "${POC_API_PORT:-8000}:${POC_API_PORT:-8000}"
   db:
     image: postgres:16
     restart: always
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
-      POSTGRES_DB: pbtar
-      PBTAR_DB_PORT: ${PBTAR_DB_PORT:-5432}
+      POSTGRES_DB: poc
+      POC_DB_PORT: ${POC_DB_PORT:-5432}
     ports:
-      - "${PBTAR_DB_PORT:-5432}:${PBTAR_DB_PORT:-5432}"
-    command: -p ${PBTAR_DB_PORT:-5432}
+      - "${POC_DB_PORT:-5432}:${POC_DB_PORT:-5432}"
+    command: -p ${POC_DB_PORT:-5432}
     volumes:
       - ./database/init:/docker-entrypoint-initdb.d
       - postgres_data:/var/lib/postgresql/data
@@ -35,8 +35,8 @@ services:
     build:
       context: frontend
     ports:
-      - "${PBTAR_FRONTEND_PORT:-80}:4280"
-    container_name: pbtar-frontend
+      - "${POC_FRONTEND_PORT:-80}:4280"
+    container_name: poc-frontend
 
 volumes:
   postgres_data:
