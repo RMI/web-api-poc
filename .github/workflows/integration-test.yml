@@ -57,7 +57,7 @@ jobs:
       - name: run integration tests
         shell: bash
         run: |
-          ./tests/test_integration.sh
+          ./tests/test-integration.sh
 
       - name: Clean up
         shell: bash
