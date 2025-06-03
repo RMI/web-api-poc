@@ -31,6 +31,19 @@ services:
       timeout: 5s
       retries: 5
 
+  frontend:
+    build:
+      context: ./frontend
+    environment:
+      - API_BASE_URL=http://localhost:${POC_API_PORT:-8000}
+      - API_KEY=${POC_API_KEY:-abc123}
+    ports:
+      - '${POC_FRONTEND_PORT:-3000}:80'
+    volumes:
+      - ./frontend:/usr/share/nginx/html
+    depends_on:
+      - api
+
 volumes:
   postgres_data:
     driver: local

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>POC API Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>POC API Dashboard</h1>
+            <nav>
+                <ul>
+                    <li><a href="#" id="nav-home" class="active">Home</a></li>
+                    <li><a href="#" id="nav-scenarios">Scenarios</a></li>
+                    <li><a href="#" id="nav-organizations">Organizations</a></li>
+                    <li><a href="#" id="nav-search">Search</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <div id="home-section" class="section active">
+            <h2>Welcome to the POC API Dashboard</h2>
+            <p>This dashboard provides visualizations for data from the POC API.</p>
+            <div class="card">
+                <h3>API Health Status</h3>
+                <div id="health-status" class="status-indicator">
+                    <span class="loading">Checking status...</span>
+                </div>
+            </div>
+            <div class="card">
+                <h3>Database Tables</h3>
+                <div id="tables-list" class="table-container">
+                    <p class="loading">Loading tables...</p>
+                </div>
+            </div>
+        </div>
+
+        <div id="scenarios-section" class="section">
+            <h2>Scenarios</h2>
+            <div class="data-controls">
+                <button id="refresh-scenarios" class="btn">Refresh Data</button>
+            </div>
+            <div id="scenarios-container">
+                <p class="loading">Loading scenarios...</p>
+            </div>
+        </div>
+
+        <div id="organizations-section" class="section">
+            <h2>Organizations</h2>
+            <div class="data-controls">
+                <button id="refresh-organizations" class="btn">Refresh Data</button>
+            </div>
+            <div id="organizations-container">
+                <p class="loading">Loading organizations...</p>
+            </div>
+        </div>
+
+        <div id="search-section" class="section">
+            <h2>Search Organizations</h2>
+            <div class="search-form">
+                <input type="text" id="search-input" placeholder="Enter search term...">
+                <button id="search-button" class="btn">Search</button>
+            </div>
+            <div id="search-results" class="results-container">
+                <p>Enter a search term to find organizations.</p>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 POC API Dashboard</p>
+        </div>
+    </footer>
+    
+    <script src="config.js"></script>
+    <script src="script.js"></script>
+    <script src="components/scenarios.js"></script>
+    <script src="components/organizations.js"></script>
+    <script src="components/search.js"></script>
+</body>
+</html>
